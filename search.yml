@@ -1,0 +1,25 @@
+---
+- hosts : ansible
+  tasks :
+    - name : create docker image
+      command : docker build -t search-service:latest .
+      args : 
+        chdir: /opt/docker/search-service
+    
+    - name : create tag to push image into dockerhub
+      command : docker tag search-service:latest janescience/search-service:latest
+
+    - name : push docker image
+      command : docker push janescience/search-service:latest
+
+    - name : stop docker container
+      command : docker stop search-service
+      ignore_errors: yes
+
+    - name : remove docker container
+      command : docker rm search-service
+      ignore_errors: yes
+
+    - name : remove docker image
+      command : docker rmi -f janescience/search-service
+      ignore_errors: yes
