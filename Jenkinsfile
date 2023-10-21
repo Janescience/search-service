@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         DOCKER_HOME = '/usr/local/bin/docker'  // Path to the Docker executable
+        KUBECTL_HOME = '/usr/local/bin/kubectl'  // Path to the Docker executable
     }
     stages{
         stage('Build Maven'){
@@ -38,6 +39,7 @@ pipeline {
                 script{
                     kubernetesDeploy (configs: 'k8s/deployment.yml',kubeconfigId: 'k8sconfigpwd')
                     kubernetesDeploy (configs: 'k8s/service.yml',kubeconfigId: 'k8sconfigpwd')
+                    sh '${KUBECTL_HOME} autoscale deployment search-service-app --cpu-percent=40 --min=1 --max=10'
                 }
             }
         
