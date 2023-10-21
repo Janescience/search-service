@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk
-ARG JAR_FILE=./*.jar
-COPY ${JAR_FILE} /usr/local/webapps/search.jar
-ENTRYPOINT ["java","-jar","/usr/local/webapps/search.jar"]
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} search.jar
+ENTRYPOINT ["java","-jar","search.jar"]
 EXPOSE 8086

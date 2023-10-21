@@ -36,8 +36,4 @@ public class IndividualSearchService {
         return pagePersonProfiles;
     }
 
-    public PersonProfile enquiry(String cisNo){
-        return personProfileRepository.findByCisNo(cisNo);
-    }
-
 }
