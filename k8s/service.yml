@@ -5,7 +5,9 @@ metadata:
 spec:
   type : NodePort
   ports:
-    - port: 80
+    - protocol: TCP
+      name: http-traffic
+      port: 80
       targetPort: 8086
   selector:
     app: search-service-app
