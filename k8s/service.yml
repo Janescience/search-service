@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: search-svc
+  name: search-service-app
+  labels:
+    app: search-service-app
 spec:
-  type : NodePort
   ports:
     - protocol: TCP
       name: http-traffic

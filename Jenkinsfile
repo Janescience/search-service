@@ -39,7 +39,6 @@ pipeline {
                 script{
                     kubernetesDeploy (configs: 'k8s/deployment.yml',kubeconfigId: 'k8sconfigpwd')
                     kubernetesDeploy (configs: 'k8s/service.yml',kubeconfigId: 'k8sconfigpwd')
-                    sh '${KUBECTL_HOME} autoscale deployment search-service-app --cpu-percent=200 --min=1 --max=10'
                 }
             }
         
