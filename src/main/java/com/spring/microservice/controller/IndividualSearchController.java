@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.spring.microservice.service.IndividualSearchService;
 
+import io.micrometer.core.annotation.Timed;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -24,6 +26,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.PageRequest;
 
 
+@Timed
 @Slf4j
 @RestController
 @RequestMapping("/individual")
@@ -36,6 +39,7 @@ public class IndividualSearchController {
     private PersonProfileRepository personProfileRepository;
 
 
+    @Timed("individual-search.api")
     @GetMapping
     public ResponseEntity<?> individualSearch(
             @RequestParam(required = true) String key,

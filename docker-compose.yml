@@ -1,0 +1,16 @@
+version: '3.6'
+
+services:
+  search-service:
+    image: search-service
+    container_name: search-service
+    build : .
+    ports:
+      - 8086:8086  
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    volumes:
+      - ./k8s/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
