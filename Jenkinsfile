@@ -39,7 +39,6 @@ pipeline {
                 script{
                     kubernetesDeploy (configs: 'k8s/deployment.yml',kubeconfigId: 'k8sconfigpwd')
                     kubernetesDeploy (configs: 'k8s/service.yml',kubeconfigId: 'k8sconfigpwd')
-                    kubernetesDeploy (configs: 'k8s/scaled-object.yml',kubeconfigId: 'k8sconfigpwd')
                 }
             }
         
